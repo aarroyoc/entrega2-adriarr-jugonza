@@ -1,5 +1,5 @@
 package bicicletoide;
 
-public abstract class Pack {
+public abstract class Pack implements Resource {
 
 }

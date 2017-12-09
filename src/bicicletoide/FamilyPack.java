@@ -1,5 +1,5 @@
 package bicicletoide;
 
-public class FamilyPack {
+public class FamilyPack extends Pack{
 
 }

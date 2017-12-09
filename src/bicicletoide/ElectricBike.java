@@ -1,5 +1,5 @@
 package bicicletoide;
 
-public class ElectricBike {
+public class ElectricBike extends Bike {
 
 }

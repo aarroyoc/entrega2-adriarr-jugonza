@@ -1,5 +1,5 @@
 package bicicletoide;
 
-public class AdultBike {
+public class AdultBike extends Bike {
 
 }

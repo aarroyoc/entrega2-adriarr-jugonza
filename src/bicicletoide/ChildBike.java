@@ -1,5 +1,5 @@
 package bicicletoide;
 
-public class ChildBike {
+public class ChildBike extends Bike{
 
 }
