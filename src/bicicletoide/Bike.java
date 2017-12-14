@@ -15,8 +15,8 @@ public abstract class Bike implements Resource{
 	}
 	
 	private final UUID id;
-	private final String model;
-	private final String company;
+	private String model;
+	private String company;
 	
 	private final Size size;
 	private final float weight;
@@ -43,8 +43,8 @@ public abstract class Bike implements Resource{
 		this.n_platos = n_platos;
 		this.n_pinones = n_pinones;
 		
-		this.model = "SuperBike";
-		this.company = "Adriciclos";
+		this.model = "DefaultBike";
+		this.company = "BikePlaceholdersInc.";
 	}
 	
 	/**
@@ -85,6 +85,14 @@ public abstract class Bike implements Resource{
 	 */
 	public UUID getID() {
 		return id;
+	}
+	
+	protected void setCompany(String company) {
+		this.company = company;
+	}
+	
+	protected void setModel(String model) {
+		this.model = model;
 	}
 	
 	public double getDepositToPay(double deposit) {
