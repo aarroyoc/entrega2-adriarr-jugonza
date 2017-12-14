@@ -2,8 +2,20 @@ package bicicletoide;
 
 public class ChildBike extends Bike{
 
-	public ChildBike(Size size, float weight, int n_platos, int n_pinones) {
-		super(size, weight, n_platos, n_pinones);
+	private int childSize;
+	
+	public ChildBike(int size, float weight, int n_platos, int n_pinones) {
+		super(Size.CHILD, weight, n_platos, n_pinones);
+		if(!(size >= 12 && size <= 26 && size % 2 == 0)) {
+			throw new IllegalArgumentException();
+		}
+		childSize = size;
+		
+	}
+	
+
+	public int getChildSize() {
+		return childSize;
 	}
 
 	@Override

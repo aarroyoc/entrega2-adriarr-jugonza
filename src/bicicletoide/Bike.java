@@ -11,7 +11,7 @@ import java.util.UUID;
 public abstract class Bike implements Resource{
 	
 	public enum Size {
-		S,M,L,XL
+		CHILD,S,M,L,XL
 	}
 	
 	private final UUID id;
