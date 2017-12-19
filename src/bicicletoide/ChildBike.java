@@ -20,6 +20,6 @@ public class ChildBike extends Bike{
 
 	@Override
 	public double getDepositToPay(double deposit) {
-		return (1-0.15)*deposit;
+		return (1-0.15)*super.getDepositToPay(deposit);
 	}
 }
