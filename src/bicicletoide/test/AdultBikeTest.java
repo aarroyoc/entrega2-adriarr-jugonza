@@ -100,6 +100,18 @@ public class AdultBikeTest {
 		AdultBike bike = new AdultBike(Bike.Size.M,20,20,10,null,"SimpleBike");
 	}
 	
+	@Test(expected=IllegalArgumentException.class)
+	public void setModelEmpty() {
+		@SuppressWarnings("unused")
+		AdultBike bike = new AdultBike(Bike.Size.M,20,20,10,"SeniorBike","");
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void setCompanyEmpty() {
+		@SuppressWarnings("unused")
+		AdultBike bike = new AdultBike(Bike.Size.M,20,20,10,"","SimpleBike");
+	}
+	
 	@Test
 	public void getDepositToPay() {
 		AdultBike bike = new AdultBike(Bike.Size.M,20,20,10,"SeniorBike","SimpleBike");
@@ -122,8 +134,22 @@ public class AdultBikeTest {
 	
 	@Test
 	public void testEqualsNull() {
-		AdultBike bike1 = new AdultBike(Bike.Size.M,20,20,10,"SeniorBike","SimpleBike");
-		assertFalse(bike1.equals(null));
+		AdultBike bike = new AdultBike(Bike.Size.M,20,20,10,"SeniorBike","SimpleBike");
+		assertFalse(bike.equals(null));
+	}
+	
+	@Test
+	public void testEqualThis() {
+		AdultBike bike = new AdultBike(Bike.Size.M,20,20,10,"SeniorBike","SimpleBike");
+		assertTrue(bike.equals(bike));
+	}
+	
+	@SuppressWarnings("unlikely-arg-type")
+	@Test
+	public void testEqualOtherClass() {
+		AdultBike bike = new AdultBike(Bike.Size.M,20,20,10,"SeniorBike","SimpleBike");
+		String str = "PRUEBA";
+		assertFalse(bike.equals(str));
 	}
 	
 	@Test

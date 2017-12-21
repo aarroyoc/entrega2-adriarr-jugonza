@@ -1,7 +1,9 @@
 package bicicletoide;
 
 /**
- * Clase que representa una batería, intercambiable, de una bicicleta eléctrica. La batería puede ser cargada y recargada
+ * Clase que representa una batería, intercambiable, de una bicicleta eléctrica. 
+ * La batería puede ser cargada y recargada con el método setCharge, nunca por
+ * debajo de cero. Esta clase solo admite como voltajes de batería 24 y 36 voltios.
  * @author aarroyoc, jugonza
  *
  */
@@ -17,7 +19,7 @@ public class Battery {
 	 * @throws IllegalArgumentException Si la carga inicial es negativa
 	 */
 	public Battery(double voltage, double charge) {
-		if(voltage != 24 || voltage != 36) {
+		if(voltage != 24 && voltage != 36) {
 			throw new IllegalArgumentException();
 		}
 		if(charge < 0) {
@@ -27,23 +29,19 @@ public class Battery {
 		this.charge = charge;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
 		return "Battery [voltage=" + voltage + ", charge=" + charge + "]";
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		long temp;
-		temp = Double.doubleToLongBits(charge);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(voltage);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		return result;
-	}
-
+	/**
+	 * {@inheritDoc}
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -53,9 +51,9 @@ public class Battery {
 		if (getClass() != obj.getClass())
 			return false;
 		Battery other = (Battery) obj;
-		if (Double.doubleToLongBits(charge) != Double.doubleToLongBits(other.charge))
+		if (Math.abs(voltage-other.voltage) > 0.01)
 			return false;
-		if (Double.doubleToLongBits(voltage) != Double.doubleToLongBits(other.voltage))
+		if (Math.abs(charge-other.charge) > 0.01)
 			return false;
 		return true;
 	}

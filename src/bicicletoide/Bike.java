@@ -4,7 +4,9 @@ import java.util.UUID;
 
 /**
  * Clase abstracta que representa una bici en el sistema Bicicletoide. 
- * No es instanciable directamente
+ * Cada bici tiene un identificador único o matrícula, que sirve para distinguirlas del resto
+ * de bicicletas. A las bicicletas se les puede preguntar por sus características, así como
+ * compararlas con otras bicicletas y obtener la fianza necesaria para obtener una bicicleta.
  * @author aarroyoc
  *
  */
@@ -24,9 +26,11 @@ public abstract class Bike implements Resource{
 	private final int n_pinones;
 	
 	/**
-	 * Crea una nueva bici de forma genérica, generándola un ID único. La compañía y el modelo de la bici
-	 * es DefaultBike de BikePlaceholders Inc. y si se quiere modificar, las clases hijas han de llamar a 
-	 * las funciones @see setCompany y @see setModel.
+	 * Crea una nueva bici de forma genérica, generándola un ID único.
+	 * Las clases hijas deben llamar a este constructor obligatoriamente.
+	 * Los valores de Size: S,M,L,XL corresponden a bicicletas de adultos, mientras
+	 * que el valor de Size: CHILD corresponde a una bicicleta infantil, que usa un
+	 * sistema distinto de 
 	 * @param size El tamaño de la bici, puede ser CHILD, S, M, L o XL
 	 * @param weight El peso de la bici en kilogramos
 	 * @param n_platos El número de platos de la bici
@@ -125,6 +129,9 @@ public abstract class Bike implements Resource{
 		if(company == null) {
 			throw new IllegalArgumentException();
 		}
+		if(company.isEmpty()) {
+			throw new IllegalArgumentException();
+		}
 		this.company = company;
 	}
 	
@@ -135,6 +142,9 @@ public abstract class Bike implements Resource{
 	 */
 	private void setModel(String model) {
 		if(model == null) {
+			throw new IllegalArgumentException();
+		}
+		if(model.isEmpty()) {
 			throw new IllegalArgumentException();
 		}
 		this.model = model;
