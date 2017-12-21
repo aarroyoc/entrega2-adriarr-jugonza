@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 import bicicletoide.AdultBike;
+import bicicletoide.ChildBike;
 import bicicletoide.Bike;
 import bicicletoide.GroupPack;
 import bicicletoide.Pack;
@@ -16,6 +17,17 @@ public class GroupPackTest {
 		for(int i = 0; i < 11; i++){
 			array[i] = new AdultBike(Bike.Size.M,70,15,10,"Bicicletoide","BiciToGuapa");
 		}
+		GroupPack group = new GroupPack(array);
+	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void testConstructorBiciNull() {
+		Bike[]array= new Bike[11];
+		for(int i = 0; i < 10; i++){
+			array[i] = new AdultBike(Bike.Size.M,70,15,10,"Bicicletoide","BiciToGuapa");
+		}
+		Bike nula = null;
+		array[10] = nula;
 		GroupPack group = new GroupPack(array);
 	}
 	
@@ -112,6 +124,19 @@ public class GroupPackTest {
 		group.removeBike(bike);
 		assertFalse(group.containsBike(bike));
 	}
+	
+	@Test (expected = IllegalArgumentException.class)
+	public void testRemoveBikeMenosDe10(){
+		Bike[]array= new Bike[10];
+		for(int i = 0; i < 9; i++){
+			array[i] = new AdultBike(Bike.Size.M,70,15,10,"Bicicletoide","BiciToGuapa");
+		}
+		GroupPack group = new GroupPack(array);
+		Bike bike = new AdultBike(Bike.Size.M,70,15,10,"Bicicletoide","BiciToGuapa");
+		group.addBike(bike);
+		group.removeBike(bike);
+	}
+	
 	@Test(expected = IllegalArgumentException.class)
 	public void testRemoveBikeNoContiene(){
 		Bike[]array= new Bike[11];
@@ -122,6 +147,7 @@ public class GroupPackTest {
 		GroupPack group = new GroupPack(array);
 		group.removeBike(bike);
 	}
+	
 	@Test
 	public void testGetBikes(){
 		Bike[]array= new Bike[11];
@@ -131,8 +157,49 @@ public class GroupPackTest {
 		GroupPack group = new GroupPack(array);
 		assertNotNull(group.getBikes());
 	}
+	
 	@Test
 	public void testGetTotalDeposit(){
-		//Not yet implemented
+		Bike[]array= new Bike[11];
+		for(int i = 0; i < 11; i++){
+			array[i] = new AdultBike(Bike.Size.M,70,15,10,"Bicicletoide","BiciToGuapa");
+		}
+		GroupPack group = new GroupPack(array);
+		assertEquals(group.getTotalDeposit(20), 220, 0);
+	}
+	@Test (expected = IllegalArgumentException.class)
+	public void testGetTotalDepositFianzaNegativa(){
+		Bike[]array= new Bike[11];
+		for(int i = 0; i < 11; i++){
+			array[i] = new AdultBike(Bike.Size.M,70,15,10,"Bicicletoide","BiciToGuapa");
+		}
+		GroupPack group = new GroupPack(array);
+		assertEquals(group.getTotalDeposit(-20), 220, 0);
+	}
+	
+	@Test 
+	public void testEquals(){
+		Bike[]array= new Bike[11];
+		for(int i = 0; i < 11; i++){
+			array[i] = new AdultBike(Bike.Size.M,70,15,10,"Bicicletoide","BiciToGuapa");
+		}
+		GroupPack group = new GroupPack(array);
+		GroupPack group2 = new GroupPack(array);
+		Bike[]array2= new Bike[11];
+		for(int i = 0; i < 11; i++){
+			array[i] = new AdultBike(Bike.Size.M,70,15,10,"Bicicletoide","BiciToGuapa");
+		}
+		GroupPack group3 = new GroupPack(array);
+		assertTrue(group.equals(group2));
+		assertFalse(group.equals(group3));
+	}
+	@Test
+	public void testGetBikeNumber(){
+		Bike[]array= new Bike[11];
+		for(int i = 0; i < 11; i++){
+			array[i] = new AdultBike(Bike.Size.M,70,15,10,"Bicicletoide","BiciToGuapa");
+		}
+		GroupPack group = new GroupPack(array);
+		assertEquals(11,group.getBikeNumber(),0);
 	}
 }

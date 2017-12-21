@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class FamilyPack extends Pack{
+	/**
+	 * Crea un nuevo pack familiar
+	 * @param bikes un array con las bicis del grupo
+	 */
 	public FamilyPack(Bike[]bikes){
 		super(new ArrayList<Bike>(Arrays.asList(bikes)));
 		if(bikes.length < 4){
@@ -24,6 +28,8 @@ public class FamilyPack extends Pack{
 	/**
 	 * Quita una bici del pack siempre y cuando eso 
 	 * no deje al pack con menos de dos bicis infantiles
+	 * @param bike La bici que hay que quitar del pack
+	 * @throws IllegalArgumentException si el pack se queda con menos de dos bicis infantiles o menos de 4 bicis
 	 */
 	public void removeBike(Bike bike){
 		if(bike.getSize()==Bike.Size.CHILD){
@@ -33,7 +39,7 @@ public class FamilyPack extends Pack{
 					childCount++;
 				}
 			}
-			if(childCount-1 < 2){
+			if(childCount-1 < 2 | getBikeNumber()-1 < 4){
 				throw new IllegalArgumentException();
 			}
 		}
@@ -42,6 +48,9 @@ public class FamilyPack extends Pack{
 	
 	@Override
 	public double getDepositToPay(double deposit){
+		if(deposit <= 0){
+			throw new IllegalArgumentException();
+		}
 		double baseDeposit = getTotalDeposit(deposit);
 		return baseDeposit*0.5;
 	}

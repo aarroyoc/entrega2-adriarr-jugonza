@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class GroupPack extends Pack{
+	/**
+	 * Crea un nuevo pack de Grupo
+	 * @param bikes un array con las bicis del grupo
+	 */
 	public GroupPack(Bike[]bikes){
 		super(new ArrayList<Bike>(Arrays.asList(bikes)));
 		if(bikes.length < 10){
@@ -20,5 +24,17 @@ public class GroupPack extends Pack{
 		return baseDeposit*0.8;
 	}
 	
+	@Override
+	/**
+	 * Quita una bici del pack siempre que eso no deje al pack con menos de 10 bicis
+	 * @param bike La bici que hay que quitar del pack
+	 * @throws IllegalArgumentException Si el pack se queda con menos de 10 bicis
+	 */
+	public void removeBike(Bike bike){
+		if(getBikeNumber()-1 < 10){
+			throw new IllegalArgumentException();
+		}
+		super.removeBike(bike);
+	}
 	
 }

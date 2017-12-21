@@ -36,5 +36,9 @@ public class AdultBike extends Bike {
 			throw new IllegalArgumentException();
 		}
 	}
+	@Override
+	public Bike clone(){
+		return new AdultBike(getSize(), getWeight(), getPlates(), getPinones(), getCompany(), getModel());
+	}
 
 }

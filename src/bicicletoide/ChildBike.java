@@ -53,4 +53,8 @@ public class ChildBike extends Bike{
 	public double getDepositToPay(double deposit) {
 		return (1-0.15)*super.getDepositToPay(deposit);
 	}
+	@Override
+	public Bike clone(){
+		return new ChildBike(getChildSize(), getWeight(), getPlates(), getPinones(), getCompany(), getModel());
+	}
 }

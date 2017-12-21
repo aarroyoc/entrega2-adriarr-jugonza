@@ -210,4 +210,7 @@ public abstract class Bike implements Resource{
 		sb.append(id.toString());
 		return sb.toString();
 	}
+	
+	@Override
+	public abstract Bike clone();
 }
