@@ -4,7 +4,9 @@ import java.util.UUID;
 
 /**
  * Clase abstracta que representa una bici en el sistema Bicicletoide. 
- * No es instanciable directamente
+ * Cada bici tiene un identificador único o matrícula, que sirve para distinguirlas del resto
+ * de bicicletas. A las bicicletas se les puede preguntar por sus características, así como
+ * compararlas con otras bicicletas y obtener la fianza necesaria para obtener una bicicleta.
  * @author aarroyoc
  *
  */
@@ -24,6 +26,7 @@ public abstract class Bike implements Resource{
 	private final int n_pinones;
 	
 	/**
+<<<<<<< HEAD
 	 * Crea una nueva bici de forma generica, generandola un ID unico. La compania y el modelo de la bici
 	 * es DefaultBike de BikePlaceholders Inc. y si se quiere modificar, las clases hijas han de llamar a 
 	 * las funciones @see setCompany y @see setModel.
@@ -35,8 +38,27 @@ public abstract class Bike implements Resource{
 	 * @throws IllegalArgumentException El numero de platos es negativo
 	 * @throws IllegalArgumentException El numero de pinones es negativo
 	 * @throws IllegalArgumentException El numero de platos es menor que de pinones
+=======
+	 * Crea una nueva bici de forma genérica, generándola un ID único.
+	 * Las clases hijas deben llamar a este constructor obligatoriamente.
+	 * Los valores de Size: S,M,L,XL corresponden a bicicletas de adultos, mientras
+	 * que el valor de Size: CHILD corresponde a una bicicleta infantil, que usa un
+	 * sistema distinto de 
+	 * @param size El tamaño de la bici, puede ser CHILD, S, M, L o XL
+	 * @param weight El peso de la bici en kilogramos
+	 * @param n_platos El número de platos de la bici
+	 * @param n_pinones El número de piñones de la bici
+	 * @param company La compañía fabricante de la bici
+	 * @param model El modelo de la bici
+	 * @throws IllegalArgumentException El peso de la bici es menor o igual a cero
+	 * @throws IllegalArgumentException El número de platos es negativo
+	 * @throws IllegalArgumentException El número de piñones es negativo
+	 * @throws IllegalArgumentException El número de platos es menor que de piñones
+	 * @throws IllegalArgumentException Company es null
+	 * @throws IllegalArgumentException Model es null
+>>>>>>> adc327e3565b062be81e8989f330ef42fd87c107
 	 */
-	public Bike(Size size, float weight, int n_platos, int n_pinones) {
+	public Bike(Size size, float weight, int n_platos, int n_pinones, String company, String model) {
 		if(weight <= 0 ) {
 			throw new IllegalArgumentException();
 		}
@@ -52,8 +74,8 @@ public abstract class Bike implements Resource{
 		this.n_platos = n_platos;
 		this.n_pinones = n_pinones;
 		
-		this.model = "DefaultBike";
-		this.company = "BikePlaceholdersInc.";
+		setModel(model);
+		setCompany(company);
 	}
 	
 	/**
@@ -117,8 +139,11 @@ public abstract class Bike implements Resource{
 	 * @param company Compania fabricante de la bici
 	 * @throws IllegalArgumentException Si la compania es null
 	 */
-	protected void setCompany(String company) {
+	private void setCompany(String company) {
 		if(company == null) {
+			throw new IllegalArgumentException();
+		}
+		if(company.isEmpty()) {
 			throw new IllegalArgumentException();
 		}
 		this.company = company;
@@ -129,8 +154,11 @@ public abstract class Bike implements Resource{
 	 * @param model El nombre del modelo de bici
 	 * @throws IllegalArgumentException Si el modelo es null
 	 */
-	protected void setModel(String model) {
+	private void setModel(String model) {
 		if(model == null) {
+			throw new IllegalArgumentException();
+		}
+		if(model.isEmpty()) {
 			throw new IllegalArgumentException();
 		}
 		this.model = model;
