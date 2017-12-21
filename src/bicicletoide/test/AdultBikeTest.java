@@ -121,6 +121,12 @@ public class AdultBikeTest {
 	}
 	
 	@Test
+	public void testEqualsNull() {
+		AdultBike bike1 = new AdultBike(Bike.Size.M,20,20,10,"SeniorBike","SimpleBike");
+		assertFalse(bike1.equals(null));
+	}
+	
+	@Test
 	public void testToString() {
 		AdultBike bike = new AdultBike(Bike.Size.M,20,20,10,"SeniorBike","SimpleBike");
 		assertTrue(bike.toString().startsWith("BICI - ID"));

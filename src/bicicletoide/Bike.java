@@ -31,12 +31,16 @@ public abstract class Bike implements Resource{
 	 * @param weight El peso de la bici en kilogramos
 	 * @param n_platos El número de platos de la bici
 	 * @param n_pinones El número de piñones de la bici
+	 * @param company La compañía fabricante de la bici
+	 * @param model El modelo de la bici
 	 * @throws IllegalArgumentException El peso de la bici es menor o igual a cero
 	 * @throws IllegalArgumentException El número de platos es negativo
 	 * @throws IllegalArgumentException El número de piñones es negativo
 	 * @throws IllegalArgumentException El número de platos es menor que de piñones
+	 * @throws IllegalArgumentException Company es null
+	 * @throws IllegalArgumentException Model es null
 	 */
-	public Bike(Size size, float weight, int n_platos, int n_pinones) {
+	public Bike(Size size, float weight, int n_platos, int n_pinones, String company, String model) {
 		if(weight <= 0 ) {
 			throw new IllegalArgumentException();
 		}
@@ -52,8 +56,8 @@ public abstract class Bike implements Resource{
 		this.n_platos = n_platos;
 		this.n_pinones = n_pinones;
 		
-		this.model = "DefaultBike";
-		this.company = "BikePlaceholdersInc.";
+		setModel(model);
+		setCompany(company);
 	}
 	
 	/**
@@ -117,7 +121,7 @@ public abstract class Bike implements Resource{
 	 * @param company Compañía fabricante de la bici
 	 * @throws IllegalArgumentException Si la compañía es null
 	 */
-	protected void setCompany(String company) {
+	private void setCompany(String company) {
 		if(company == null) {
 			throw new IllegalArgumentException();
 		}
@@ -129,7 +133,7 @@ public abstract class Bike implements Resource{
 	 * @param model El nombre del modelo de bici
 	 * @throws IllegalArgumentException Si el modelo es null
 	 */
-	protected void setModel(String model) {
+	private void setModel(String model) {
 		if(model == null) {
 			throw new IllegalArgumentException();
 		}

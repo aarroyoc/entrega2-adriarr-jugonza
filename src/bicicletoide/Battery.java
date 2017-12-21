@@ -1,9 +1,21 @@
 package bicicletoide;
 
+/**
+ * Clase que representa una batería, intercambiable, de una bicicleta eléctrica. La batería puede ser cargada y recargada
+ * @author aarroyoc, jugonza
+ *
+ */
 public class Battery {
 	private double voltage;
 	private double charge;
 	
+	/**
+	 * Crea una nueva batería, con un voltaje (24 V o 36 V) y una carga inicial (en Amperios-hora)
+	 * @param voltage Voltaje de la batería en voltios. Solo puede ser 24 o 36
+	 * @param charge La carga inicial de la batería en amperios-hora
+	 * @throws IllegalArgumentException Si el voltaje no es igual a 24 o 36
+	 * @throws IllegalArgumentException Si la carga inicial es negativa
+	 */
 	public Battery(double voltage, double charge) {
 		if(voltage != 24 || voltage != 36) {
 			throw new IllegalArgumentException();
@@ -48,14 +60,27 @@ public class Battery {
 		return true;
 	}
 
+	/**
+	 * Devuelve el voltaje de la batería
+	 * @return El voltaje de la batería, en voltios
+	 */
 	public double getVoltage() {
 		return voltage;
 	}
 	
+	/**
+	 * Devuelve la carga actual de la batería
+	 * @return La carga actual de la batería en amperios-hora
+	 */
 	public double getCharge() {
 		return charge;
 	}
 	
+	/**
+	 * Cambia la carga de la batería
+	 * @param charge La nueva carga de la bateria, en amperios-hora
+	 * @throws IllegalArgumentException Si la nueva carga es negativa
+	 */
 	public void setCharge(double charge) {
 		if(charge < 0) {
 			throw new IllegalArgumentException();

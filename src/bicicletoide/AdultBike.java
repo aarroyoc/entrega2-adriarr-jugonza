@@ -13,12 +13,10 @@ public class AdultBike extends Bike {
 	 * @throws IllegalArgumentException Si el tamaño de la bici es CHILD
 	 */
 	public AdultBike(Size size, float weight, int n_platos, int n_pinones, String company, String model) {
-		super(size, weight, n_platos, n_pinones);
+		super(size, weight, n_platos, n_pinones,company,model);
 		if(size == Size.CHILD) {
 			throw new IllegalArgumentException();
 		}
-		this.setCompany(company);
-		this.setModel(model);
 	}
 
 }
