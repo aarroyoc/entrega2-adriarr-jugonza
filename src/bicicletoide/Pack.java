@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.ArrayList;
 
 public abstract class Pack implements Resource {
-	private ArrayList<Bike> bikeList = new ArrayList<Bike>();
+	protected ArrayList<Bike> bikeList = new ArrayList<Bike>();
 	public Pack(ArrayList<Bike> bikes){
 		Set<Bike> set = new HashSet<Bike>(bikes);
 		if(set.size() < bikes.size()){
@@ -20,7 +20,12 @@ public abstract class Pack implements Resource {
 	 * @param bike
 	 * @return
 	 */
-	public abstract Bike addBike(Bike bike);
+	public void addBike(Bike bike){
+		if(bikeList.contains(bike)){
+			throw new IllegalArgumentException();
+		}
+		bikeList.add(bike);
+	}
 	
 	/**
 	 * Quita una bici del pack siempre que se respeten las normas
@@ -28,7 +33,13 @@ public abstract class Pack implements Resource {
 	 * @param bike
 	 * @return
 	 */
-	public abstract Bike removeBike(Bike bike);
+	public void removeBike(Bike bike){
+		if(bikeList.contains(bike)){
+			bikeList.remove(bike);
+		}else{
+			throw new IllegalArgumentException();
+		}
+	}
 	
 	
 	public boolean containsBike(Bike bike){
@@ -37,17 +48,22 @@ public abstract class Pack implements Resource {
 	
 	
 	public Bike[] getBikes(){
-		return (Bike[])bikeList.toArray();
+		Bike[]array = new Bike[bikeList.size()];
+		return bikeList.toArray(array);
 	}
 	
 	/**
 	 * Devuelve la suma de las fianzas por las bicis del pack
 	 */
-	public double getTotalDeposit(){
+	public double getTotalDeposit(double deposit){
 		double total = 0;
 		for(Bike bike : bikeList){
 			total += bike.getDepositToPay(deposit);//¿Como se cual es la fianza?
 		}
 		return total;
 	}
+	
+	public abstract double getDepositToPay(double deposit);
+	
+	
 }

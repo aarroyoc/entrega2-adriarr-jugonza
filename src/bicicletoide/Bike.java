@@ -24,17 +24,17 @@ public abstract class Bike implements Resource{
 	private final int n_pinones;
 	
 	/**
-	 * Crea una nueva bici de forma genérica, generándola un ID único. La compañía y el modelo de la bici
+	 * Crea una nueva bici de forma generica, generandola un ID unico. La compania y el modelo de la bici
 	 * es DefaultBike de BikePlaceholders Inc. y si se quiere modificar, las clases hijas han de llamar a 
 	 * las funciones @see setCompany y @see setModel.
-	 * @param size El tamaño de la bici, puede ser CHILD, S, M, L o XL
+	 * @param size El tamano de la bici, puede ser CHILD, S, M, L o XL
 	 * @param weight El peso de la bici en kilogramos
-	 * @param n_platos El número de platos de la bici
-	 * @param n_pinones El número de piñones de la bici
+	 * @param n_platos El numero de platos de la bici
+	 * @param n_pinones El numero de pinones de la bici
 	 * @throws IllegalArgumentException El peso de la bici es menor o igual a cero
-	 * @throws IllegalArgumentException El número de platos es negativo
-	 * @throws IllegalArgumentException El número de piñones es negativo
-	 * @throws IllegalArgumentException El número de platos es menor que de piñones
+	 * @throws IllegalArgumentException El numero de platos es negativo
+	 * @throws IllegalArgumentException El numero de pinones es negativo
+	 * @throws IllegalArgumentException El numero de platos es menor que de pinones
 	 */
 	public Bike(Size size, float weight, int n_platos, int n_pinones) {
 		if(weight <= 0 ) {
@@ -65,16 +65,16 @@ public abstract class Bike implements Resource{
 	}
 	
 	/**
-	 * Devuelve el número de platos de la bici
-	 * @return El número de platos de la bici
+	 * Devuelve el numero de platos de la bici
+	 * @return El numero de platos de la bici
 	 */
 	public int getPlates() {
 		return this.n_platos;
 	}
 	
 	/**
-	 * Devuelve el número de piñones de la bici
-	 * @return El número de piñones de la bici
+	 * Devuelve el numero de pinones de la bici
+	 * @return El numero de pinones de la bici
 	 */
 	public int getPinones() {
 		return this.n_pinones;
@@ -89,8 +89,8 @@ public abstract class Bike implements Resource{
 	}
 	
 	/**
-	 * Devuelve la compañia fabricante de la bici
-	 * @return La compañía que fabricó la bici
+	 * Devuelve la compania fabricante de la bici
+	 * @return La compania que fabrico la bici
 	 */
 	public String getCompany() {
 		return company;
@@ -106,16 +106,16 @@ public abstract class Bike implements Resource{
 	
 	/**
 	 * Devuelve un identificador unico de la bici
-	 * @return El identificador único de la bici
+	 * @return El identificador unico de la bici
 	 */
 	public UUID getID() {
 		return id;
 	}
 	
 	/**
-	 * Permite asignar la compañía fabricante de la bici
-	 * @param company Compañía fabricante de la bici
-	 * @throws IllegalArgumentException Si la compañía es null
+	 * Permite asignar la compania fabricante de la bici
+	 * @param company Compania fabricante de la bici
+	 * @throws IllegalArgumentException Si la compania es null
 	 */
 	protected void setCompany(String company) {
 		if(company == null) {
@@ -150,7 +150,7 @@ public abstract class Bike implements Resource{
 	}
 
 	/**
-	 * Implementa la operación de igualdad entre bicis. Dos bicis son iguales si tienen igual ID
+	 * Implementa la operacion de igualdad entre bicis. Dos bicis son iguales si tienen igual ID
 	 * @param obj El otro objeto a comparar
 	 * @return true si las bicis son iguales, false en caso contrario
 	 */
@@ -172,8 +172,8 @@ public abstract class Bike implements Resource{
 	}
 	
 	/**
-	 * Devuelve una representación en java.lang.String de la bici
-	 * @return Un String con la representación de la bici
+	 * Devuelve una representacion en java.lang.String de la bici
+	 * @return Un String con la representacion de la bici
 	 */
 	@Override
 	public String toString() {
