@@ -7,10 +7,10 @@ import java.util.UUID;
  * Cada bici tiene un identificador único o matrícula, que sirve para distinguirlas del resto
  * de bicicletas. A las bicicletas se les puede preguntar por sus características, así como
  * compararlas con otras bicicletas y obtener la fianza necesaria para obtener una bicicleta.
- * @author aarroyoc
+ * @author aarroyoc, jugonza
  *
  */
-public abstract class Bike implements Resource{
+public abstract class Bike implements Resource, Cloneable{
 	
 	public enum Size {
 		CHILD,S,M,L,XL
@@ -26,19 +26,6 @@ public abstract class Bike implements Resource{
 	private final int n_pinones;
 	
 	/**
-<<<<<<< HEAD
-	 * Crea una nueva bici de forma generica, generandola un ID unico. La compania y el modelo de la bici
-	 * es DefaultBike de BikePlaceholders Inc. y si se quiere modificar, las clases hijas han de llamar a 
-	 * las funciones @see setCompany y @see setModel.
-	 * @param size El tamano de la bici, puede ser CHILD, S, M, L o XL
-	 * @param weight El peso de la bici en kilogramos
-	 * @param n_platos El numero de platos de la bici
-	 * @param n_pinones El numero de pinones de la bici
-	 * @throws IllegalArgumentException El peso de la bici es menor o igual a cero
-	 * @throws IllegalArgumentException El numero de platos es negativo
-	 * @throws IllegalArgumentException El numero de pinones es negativo
-	 * @throws IllegalArgumentException El numero de platos es menor que de pinones
-=======
 	 * Crea una nueva bici de forma genérica, generándola un ID único.
 	 * Las clases hijas deben llamar a este constructor obligatoriamente.
 	 * Los valores de Size: S,M,L,XL corresponden a bicicletas de adultos, mientras
@@ -56,7 +43,6 @@ public abstract class Bike implements Resource{
 	 * @throws IllegalArgumentException El número de platos es menor que de piñones
 	 * @throws IllegalArgumentException Company es null
 	 * @throws IllegalArgumentException Model es null
->>>>>>> adc327e3565b062be81e8989f330ef42fd87c107
 	 */
 	public Bike(Size size, float weight, int n_platos, int n_pinones, String company, String model) {
 		if(weight <= 0 ) {

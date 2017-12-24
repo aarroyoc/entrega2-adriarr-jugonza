@@ -28,11 +28,11 @@ public class GroupPack extends Pack{
 	/**
 	 * Quita una bici del pack siempre que eso no deje al pack con menos de 10 bicis
 	 * @param bike La bici que hay que quitar del pack
-	 * @throws IllegalArgumentException Si el pack se queda con menos de 10 bicis
+	 * @throws IllegalStateException Si el pack se queda con menos de 10 bicis
 	 */
 	public void removeBike(Bike bike){
 		if(getBikeNumber()-1 < 10){
-			throw new IllegalArgumentException();
+			throw new IllegalStateException();
 		}
 		super.removeBike(bike);
 	}
