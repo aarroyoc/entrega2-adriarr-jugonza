@@ -95,4 +95,9 @@ public class ElectricBike extends Bike {
 		return parMotor;
 	}
 	
+	public Bike clone(){
+		return new ElectricBike(getSize(), getWeight(), getPlates(), getPinones(), getCompany(),
+				getModel(), getParMotor(), getBattery().clone());
+	}
+	
 }

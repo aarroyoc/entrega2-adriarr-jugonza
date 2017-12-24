@@ -85,4 +85,8 @@ public class Battery {
 		}
 		this.charge = charge;
 	}
+	
+	public Battery clone(){
+		return new Battery(getVoltage(),getCharge());
+	}
 }
