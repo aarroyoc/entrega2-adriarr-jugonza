@@ -4,6 +4,14 @@ import java.util.Set;
 import java.util.HashSet;
 import java.util.ArrayList;
 
+/**
+ * Clase abstracta que representa un pack en el sistema, cada pack 
+ * tiene asociada una lista de las bicis que contiene, se pueden añadir 
+ * y quitar bicis de la lista, así como determinar si una bici está en el pack,
+ * pedir la lista completa con las bicis, y la fianza a pagar
+ *  @author aarroyoc, jugonza
+ *
+ */
 public abstract class Pack implements Resource {
 	protected ArrayList<Bike> bikeList = new ArrayList<Bike>();
 	

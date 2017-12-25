@@ -3,6 +3,11 @@ package bicicletoide;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * Pack de grupo, este pack aplica un descuento del 20% a la fianza a pagar
+ *  @author aarroyoc, jugonza
+ *
+ */
 public class GroupPack extends Pack{
 	/**
 	 * Crea un nuevo pack de Grupo

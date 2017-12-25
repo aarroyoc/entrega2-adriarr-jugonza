@@ -185,7 +185,6 @@ public class GroupPackTest {
 		}
 		GroupPack group = new GroupPack(array);
 		GroupPack group2 = new GroupPack(array);
-		Bike[]array2= new Bike[11];
 		for(int i = 0; i < 11; i++){
 			array[i] = new AdultBike(Bike.Size.M,70,15,10,"Bicicletoide","BiciNormal");
 		}

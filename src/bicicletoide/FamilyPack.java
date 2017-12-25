@@ -3,6 +3,11 @@ package bicicletoide;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * Pack familiar, aplica un 50% de descuento a la fianza a pagar
+ *  @author aarroyoc, jugonza
+ *
+ */
 public class FamilyPack extends Pack{
 	/**
 	 * Crea un nuevo pack familiar

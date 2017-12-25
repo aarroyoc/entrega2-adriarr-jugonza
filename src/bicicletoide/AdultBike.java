@@ -33,6 +33,9 @@ public class AdultBike extends Bike {
 		}
 	}
 	@Override
+	/**
+	 * @returns Una copia de la bici que llamó al método
+	 */
 	public Bike clone(){
 		return new AdultBike(getSize(), getWeight(), getPlates(), getPinones(), getCompany(), getModel());
 	}
